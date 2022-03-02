@@ -12,7 +12,7 @@ You can list an unlimited number of strings, but performance decreases with larg
 
 The longer the string, the chance of it being generated decreases exponentially
 
-Tested running 64 threads, 8-12 strings. My specs: i9-11900H, nvidia rtx 3050ti (Usage: 95% cpu, 35% gpu)
+Tested running 64 threads, 8-12 strings. My specs: i9-11900H, nvidia rtx 3050ti, 32GB ram (Usage: 95% cpu, 35% gpu)
 
 ### Dependencies
 
