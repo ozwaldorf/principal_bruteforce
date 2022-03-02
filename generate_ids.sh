@@ -1,6 +1,6 @@
 #!/bin/bash
 trap 'pkill -TERM -P $$ && rm -rf tmp' EXIT
-printf " Principal ID Bruteforce ↴\n\n"
+printf "→ Principal ID Bruteforce ↴\n\n"
 if [[ -z $2 ]]; then
  printf "$0 <number of threads> prefix_string [string2 ...]"; exit 1
 fi
@@ -8,7 +8,7 @@ spinner () {
   spin='⋅˖+┼╋┼+˖'; i=0
   while true 2>/dev/null; do
     i=$(( (i+1) %8 ))
-    printf "\r  ${spin:$i:1} ... Generating identities ... ${spin:$i:1}  "
+    printf "\r ${spin:$i:1} ... Generating identities ... ${spin:$i:1} "
     sleep .1
   done
 }
@@ -28,12 +28,15 @@ gen () {
   principal="\n"
   while $(check "$principal" ${@}); do
     rm seed.txt 2>/dev/null
-    keysmith generate; principal=$(keysmith principal)
+    keysmith generate
+    principal=$(keysmith principal)
   done
-  printf "\nFound Principal ID! : %s\n\a" "$principal"
+  printf "\n\nFound Principal ID! : %s\n" "$principal"
   keysmith private-key
-  mkdir -p ../../${principal:0:11}; cp * ../../${principal:0:11}
+  dir=${principal:0:11}; mkdir -p ../../$dir; cp * ../../$dir
+  cd ../..
+  printf "Saved to $PWD/$dir/\n\n\a"
 }
 procs=$1 && shift
 for x in $(seq $procs); do gen $@ 2>/dev/null & done
-spinner & wait -n #remove -n to continue to generate ids
+spinner & wait -n #remove -n to complete every thread (generate x ids)

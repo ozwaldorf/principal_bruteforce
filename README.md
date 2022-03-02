@@ -11,3 +11,7 @@ Generate a principal id with a human readable prefix!
 You can list an unlimited number of strings, but with a performance hit with large inputs
 
 Tested running 64 threads on an i9-11900H, handled it easily
+
+### Dependencies
+
+Bash, [keysmith](https://github.com/dfinity/keysmith)
