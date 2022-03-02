@@ -1,12 +1,14 @@
 # Principal Bruteforce
 
-Generate a principal id with a human readable prefix! 
+Generate a principal id for the internet computer with a human readable prefix! 
 
 ## Usage
 
 ```sh
 ./generate_ids.sh <number of threads> prefix_string [string2 ...]
 ```
+
+This will output a private key and a seed phrase file into a folder. You can then import the pem with dfx, and import the seed into plugwallet (root account)
 
 You can list an unlimited number of strings, but performance decreases with large amounts.
 
